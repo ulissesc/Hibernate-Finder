@@ -33,7 +33,7 @@ Examplos de utilização
 			);
 		
 		/* count do resultado */
-		int count = hf.count((
+		int count = hf.count(
 				Pessoa.class, //tipo da entidade
 				new Range(0, 10), //paginação ou null
 				Order.asc("nome"), //ordenação ou null

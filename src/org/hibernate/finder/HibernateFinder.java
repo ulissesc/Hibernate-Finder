@@ -67,12 +67,13 @@ public class HibernateFinder {
 	/**
 	 * Retorna o resultado da busca
 	 * 
-	 * @param clazz
-	 * @param range
-	 * @param orderByList
-	 * @param valorBusca
-	 * @param propriedades
-	 * @return
+	 * @param clazz - Tipo da Entidade
+	 * @param range - Objeto utilizado na paginação. <b>Não é obrigatório, portanto pode ser null.</b>
+	 * @param orderByList - Objeto do Hibernate utilizado para a ordenação. <b>Não é obrigatório, portanto pode ser null.</b>
+	 * @param valorBusca - Valor a ser buscado. Pode ser texto, data, numeros ...
+	 * @param propriedades - Nome das propriedades da entidade que serão pesquisadas.
+	 * 
+	 * @return Listagem de objetos encontrados
 	 */
 	@SuppressWarnings("rawtypes")
 	public List find(Class clazz, Range range, List<Order> orderByList, String valorBusca, String... propriedades){
@@ -104,9 +105,10 @@ public class HibernateFinder {
 	 * É util em situações onde é necessário saber quantos registros foram
 	 * encontrados, como por exemplo a utilização na geração da paginação em listagens.
 	 * 
-	 * @param clazz
-	 * @param valorBusca
-	 * @param propriedades
+	 * @param clazz - Tipo da Entidade
+	 * @param valorBusca - Valor a ser buscado. Pode ser texto, data, numeros ...
+	 * @param propriedades - Nome das propriedades da entidade que serão pesquisadas.
+	 * 
 	 * @return
 	 */
 	public int count(@SuppressWarnings("rawtypes") Class clazz, String valorBusca, String... propriedades){
