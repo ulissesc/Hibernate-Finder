@@ -1,10 +1,10 @@
 Hibernage Generic Finder
-=======================================
+========================
 
 Classe Java utilizada para auxiliar a criação de buscas genéricas utilizando o Hibernate.
 
 Utilização
-=====
+==========
 
 Apenas importe a biblioteca (ou os fontes para a sua aplicação) na sua aplição. 
 Se desejar editar o projeto, o mesmo foi criado utilizando a IDE Eclipse.
@@ -14,8 +14,8 @@ no classpath da sua aplicação.
 
 
 
-Examplos
-==============
+Examplos de utilização
+======================
 
         Session session = HibernateUtil.getSession();
 
@@ -25,18 +25,18 @@ Examplos
 		/* busca pelo objeto Pessoa, com paginação e ordenação */
 		List<Pessoa> pessoas = hf.find(
 				Pessoa.class, //tipo da entidade
-				new Range(0, 10), //paginação
-				Order.asc("nome"), //ordenação
+				new Range(0, 10), //paginação ou null
+				Order.asc("nome"), //ordenação ou null
 				"ulisses", //valor da busca
-				"nome", //propriedades a serem buscadas...
+				"nome", //propriedades a serem buscadas (qtas quiser ...)
 				"sobrenome"
 			);
 		
-		/* Count do resultado */
+		/* count do resultado */
 		int count = hf.count((
 				Pessoa.class, //tipo da entidade
-				new Range(0, 10), //paginação
-				Order.asc("nome"), //ordenação
+				new Range(0, 10), //paginação ou null
+				Order.asc("nome"), //ordenação ou null
 				"ulisses", //valor da busca
 				"nome", //propriedades a serem buscadas...
 				"sobrenome"
