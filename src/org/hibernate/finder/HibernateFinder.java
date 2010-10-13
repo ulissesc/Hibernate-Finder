@@ -224,7 +224,7 @@ public class HibernateFinder {
 	
 	
 	/**
-	 * Retorna os Joins que serao necessários ser feitos para realizar a busca
+	 * Retorna os Joins que serao necessários para realizar a busca
 	 * @param joins
 	 * @param propriedade
 	 * @return
@@ -268,7 +268,7 @@ public class HibernateFinder {
 	}
 	
 	
-	public Date toSqlDate(String data) throws ParseException {
+	private Date toSqlDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
 
@@ -279,7 +279,7 @@ public class HibernateFinder {
 	}
 	
 	
-	public Timestamp toSqlTimestampByDate(String data) throws ParseException {
+	private Timestamp toSqlTimestampByDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
 
