@@ -25,6 +25,9 @@ public class HibernateFinder {
 	/* DEFAULT true */
 	private boolean disjunction = true;
 	
+	/* DEFAULT date pattern */
+	private String datePattern = "dd/MM/yyyy";
+	
 	public HibernateFinder(Session currentSession){
 		this.currentSession = currentSession;
 	}
@@ -36,7 +39,7 @@ public class HibernateFinder {
 	 * <br>Ex.: select * from pessoa where nome = 'ulisses' OR sobre_nome = 'constantini'
 	 * 
 	 * <br/>
-	 * Se  "disjunction" for setada como FALSE, então será utilizado o agregador "AND" (conjunction)
+	 * Se  "disjunction" for setado como FALSE, então será utilizado o agregador "AND" (conjunction)
 	 * 
 	 * <br/><b>Valor default: TRUE</b>
 	 * 
@@ -46,6 +49,19 @@ public class HibernateFinder {
 		this.disjunction = disjunction;
 	}
 	
+	
+	
+	/**
+	 * Informa o pattern que deve ser utilizado para o 
+	 * reconhecimento de datas. 
+	 * 
+	 * <b>Valor default: dd/MM/yyyy</b>
+	 * 
+	 * @param datePattern
+	 */
+	public void setDatePattern(String datePattern) {
+		this.datePattern = datePattern;
+	}
 	
 	/**
 	 * Informa se a busca generica irá utilizar "disjunction", 
@@ -252,23 +268,23 @@ public class HibernateFinder {
 	}
 	
 	
-	public static Date toSqlDate(String data) throws ParseException {
+	public Date toSqlDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
 
 		Date date = null;
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat formatter = new SimpleDateFormat( datePattern );
 		date = new Date(formatter.parse(data).getTime());
 		return date;
 	}
 	
 	
-	public static Timestamp toSqlTimestampByDate(String data) throws ParseException {
+	public Timestamp toSqlTimestampByDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
 
 		Timestamp timestamp = null;
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat formatter = new SimpleDateFormat( datePattern );
 		timestamp = new Timestamp(formatter.parse(data).getTime());
 		return timestamp;
 	}
