@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Junction;
@@ -92,9 +91,8 @@ public class HibernateFinder {
 		
 		/* APLICA ORDENACAO, SE HOUVER */
 		if (orderByList != null){
-			for (Order order : orderByList) {
+			for (Order order : orderByList)
 				criteria.addOrder(order);
-			}
 		}
 		
 		return criteria.list();
@@ -122,8 +120,8 @@ public class HibernateFinder {
 	}
 	
 	
-	@SuppressWarnings("unchecked")
-	private Criteria criarCriteriaBusca(@SuppressWarnings("rawtypes") Class clazz,
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private Criteria criarCriteriaBusca(Class clazz,
 			String valorBusca, String... propriedades) {
 		
 		Criteria criteria = currentSession.createCriteria(clazz);
@@ -135,7 +133,6 @@ public class HibernateFinder {
 			// recupera o valor a ser comparado
 			String valor = valorBusca;
 
-			@SuppressWarnings("rawtypes")
 			Class propertyType;
 			try {
 				propertyType = getAnyType(clazz, propriedade);
@@ -193,6 +190,7 @@ public class HibernateFinder {
 				criterion = CriterionComparator.EQ.get(propriedade, data);
 			}
 			
+			
 			if (criterion == null)
 				continue;
 			
@@ -216,10 +214,10 @@ public class HibernateFinder {
 	private static final String getJoins(List<String> joins, String propriedade) {
 		String[] propiedades = propriedade.split("\\.");
 		if (propiedades.length > 1) {
-			for (int i = propiedades.length - 2; i >= 0; i--) {
+			for (int i = propiedades.length - 2; i >= 0; i--)
 				joins.add(propiedades[i]);
-			}
 		}
+		
 		Collections.reverse(joins);
 
 		return propiedades[propiedades.length - 1];
@@ -251,6 +249,7 @@ public class HibernateFinder {
 		return lastType;
 	}
 	
+	
 	public static Date toSqlDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
@@ -260,6 +259,7 @@ public class HibernateFinder {
 		date = new Date(formatter.parse(data).getTime());
 		return date;
 	}
+	
 	
 	public static Timestamp toSqlTimestampByDate(String data) throws ParseException {
 		if (data == null || data.equals(""))
