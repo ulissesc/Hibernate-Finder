@@ -29,7 +29,8 @@ Examplos de utilização
 				Order.asc("nome"), /* ordenação ou null */
 				"ulisses", /* valor da busca - Pode ser qquer coisa. Ex: string, data, numeros... */
 				"nome", /* propriedades a serem buscadas. Coloque qtas quiser. Ex.: "nome" e "sobrenome" */
-				"sobrenome"
+				"sobrenome",
+				"endereco.logradouro"
 			);
 		
 		/* count do resultado */
@@ -37,7 +38,8 @@ Examplos de utilização
 				Pessoa.class, /* tipo da entidade */
 				"ulisses", /* valor da busca - Pode ser qquer coisa. Ex: string, data, numeros... */
 				"nome", /* propriedades a serem buscadas. Coloque qtas quiser. Ex.: "nome" e "sobrenome" */
-				"sobrenome"
+				"sobrenome",
+				"endereco.logradouro"
 			);
 
 
