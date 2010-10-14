@@ -35,8 +35,6 @@ Examplos de utilização
 		/* count do resultado */
 		int count = hf.count(
 				Pessoa.class, /* tipo da entidade */
-				new Range(0, 10), /* paginação ou null */
-				Order.asc("nome"), /* ordenação ou null */
 				"ulisses", /* valor da busca - Pode ser qquer coisa. Ex: string, data, numeros... */
 				"nome", /* propriedades a serem buscadas. Coloque qtas quiser. Ex.: "nome" e "sobrenome" */
 				"sobrenome"
