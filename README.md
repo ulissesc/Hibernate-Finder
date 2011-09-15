@@ -1,4 +1,4 @@
-Hibernage Generic Finder
+Hibernate Generic Finder
 ========================
 
 Classe Java utilizada para auxiliar a criação de buscas genéricas utilizando o Hibernate.
